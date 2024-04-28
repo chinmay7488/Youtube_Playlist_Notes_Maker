@@ -1,12 +1,12 @@
 from googleapiclient.discovery import build
+from dotenv import load_dotenv
 import os
 
 class VideoLinkHelper:
     
-    __api_key = 'AIzaSyDx-RnIaiMj6kSO-u0VEiPAKTRp74hJM84'
-
     def __init__(self):
-        self.youtube = build('youtube', 'v3', developerKey=self.__api_key)
+        load_dotenv()
+        self.youtube = build('youtube', 'v3', developerKey=os.getenv('google_api_key'))
 
     def get_playlist_videos(self, playlist_id):
 
